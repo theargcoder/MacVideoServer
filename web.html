@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Arch Video Stream</title>
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #ddd;
+      text-shadow: 0 0 10px #222;
+    }
+
+    .video-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #000;
+      overflow: hidden;
+      background: #000;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📽️ Streaming from your Arch Server</h1>
+
+  <div class="video-wrapper">
+    <video id="player" controls playsinline crossorigin="anonymous">
+      <track kind="subtitles" src="*.vtt" srclang="en" label="English" default>
+    </video>
+  </div>
+
+  <script>
+    const video = document.getElementById('player');
+
+    // === CONFIG ===
+    const filename = "*.mp4";
+    const base = `${window.location.protocol}//${window.location.host}`;
+    video.src = `${base}/${encodeURIComponent(filename)}?bitrate=80000000&fps=60`;
+
+  </script>
+</body>
+
+</html>
